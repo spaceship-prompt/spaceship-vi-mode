@@ -1,20 +1,20 @@
 <h1 align="center">
-  😍 + 🚀
-  <br>Spaceship Section<br>
+  ✍️ + 🚀
+  <br>Spaceship Vi-mode<br>
 </h1>
 
 <h4 align="center">
-  A <a href="https://template.com" target="_blank">Tool</a> section for Spaceship prompt
+  Vi-mode section for Spaceship prompt
 </h4>
 
 <p align="center">
-  <a href="https://github.com/spaceship-prompt/spaceship-section/releases">
-    <img src="https://img.shields.io/github/v/release/spaceship-prompt/spaceship-section.svg?style=flat-square"
+  <a href="https://github.com/spaceship-prompt/spaceship-vi-mode/releases">
+    <img src="https://img.shields.io/github/v/release/spaceship-prompt/spaceship-vi-mode.svg?style=flat-square"
       alt="GitHub Release" />
   </a>
 
-  <a href="https://github.com/spaceship-prompt/spaceship-section/actions">
-    <img src="https://img.shields.io/github/workflow/status/spaceship-prompt/spaceship-section/ci?style=flat-square"
+  <a href="https://github.com/spaceship-prompt/spaceship-vi-mode/actions">
+    <img src="https://img.shields.io/github/workflow/status/spaceship-prompt/spaceship-vi-mode/ci?style=flat-square"
       alt="GitHub Workflow Status" />
   </a>
 
@@ -31,7 +31,7 @@
   </a>
 </p>
 
-Current Tool version, through tool (`😍`).
+This section shows mode indicator only when Vi-mode is enabled.
 
 ## Installing
 
@@ -42,50 +42,52 @@ You need to source this plugin somewhere in your dotfiles. Here's how to do it w
 Execute this command to clone this repo into Oh-My-Zsh plugin's folder:
 
 ```zsh
-git clone https://github.com/spaceship-prompt/spaceship-section.git $ZSH_CUSTOM/plugins/spaceship-section
+git clone https://github.com/spaceship-prompt/spaceship-vi-mode.git $ZSH_CUSTOM/plugins/spaceship-vi-mode
 ```
 
-Include `spaceship-section` in Oh-My-Zsh plugins list:
+Include `spaceship-vi-mode` in Oh-My-Zsh plugins list:
 
 ```zsh
-plugins=($plugins spaceship-section)
+plugins=($plugins spaceship-vi-mode)
 ```
+
+**Note:** For oh-my-zsh users with vi-mode plugin enabled: Add `export RPS1="%{$reset_color%}"` before `source $ZSH/oh-my-zsh.sh` in `.zshrc` to disable default `<<<` NORMAL mode indicator in right prompt.
 
 ### [zplug]
 
 ```zsh
-zplug "spaceship-prompt/spaceship-section"
+zplug "spaceship-prompt/spaceship-vi-mode"
 ```
 
 ### [antigen]
 
 ```zsh
-antigen bundle "spaceship-prompt/spaceship-section"
+antigen bundle "spaceship-prompt/spaceship-vi-mode"
 ```
 
 ### [antibody]
 
 ```zsh
-antibody bundle "spaceship-prompt/spaceship-section"
+antibody bundle "spaceship-prompt/spaceship-vi-mode"
 ```
 
 ### [zinit]
 
 ```zsh
-zinit light "spaceship-prompt/spaceship-section"
+zinit light "spaceship-prompt/spaceship-vi-mode"
 ```
 
 ### [zgen]
 
 ```zsh
-zgen load "spaceship-prompt/spaceship-section"
+zgen load "spaceship-prompt/spaceship-vi-mode"
 ```
 
 ### [sheldon]
 
 ```toml
 [plugins.spaceship-section]
-github = "spaceship-prompt/spaceship-section"
+github = "spaceship-prompt/spaceship-vi-mode"
 ```
 
 ## Usage
@@ -93,24 +95,39 @@ github = "spaceship-prompt/spaceship-section"
 After installing, add the following line to your `.zshrc` in order to include Ember section in the prompt:
 
 ```zsh
-spaceship add section
+# to include after line break
+spaceship add --after line_sep vi_mode
+
+# or
+# to include after prompt char
+spaceship add --before char vi_mode
 ```
 
 ## Options
 
-This section is shown only in directories containing a `file-to-check.ext` file.
-
 | Variable                   |              Default               | Meaning                              |
 | :------------------------- | :--------------------------------: | ------------------------------------ |
-| `SPACESHIP_SECTION_SHOW`   |               `true`               | Show current section                 |
-| `SPACESHIP_SECTION_PREFIX` | `$SPACESHIP_PROMPT_DEFAULT_PREFIX` | Prefix before section                |
-| `SPACESHIP_SECTION_SUFFIX` | `$SPACESHIP_PROMPT_DEFAULT_SUFFIX` | Suffix after section                 |
-| `SPACESHIP_SECTION_SYMBOL` |               `😍·`                | Character to be shown before version |
-| `SPACESHIP_SECTION_COLOR`  |             `yellow`               | Color of section                     |
+| `SPACESHIP_VI_MODE_SHOW`   |               `true`               | Show section                         |
+| `SPACESHIP_VI_MODE_PREFIX` |                 -                  | Section's prefix                     |
+| `SPACESHIP_VI_MODE_SUFFIX` | `$SPACESHIP_PROMPT_DEFAULT_SUFFIX` | Section's suffix                     |
+| `SPACESHIP_VI_MODE_INSERT` |               `[I]`                | Text to be shown when in insert mode |
+| `SPACESHIP_VI_MODE_NORMAL` |               `[N]`                | Text to be shown when in normal mode |
+| `SPACESHIP_VI_MODE_COLOR`  |              `white`               | Sectin's color                       |
+
+## Helpers
+
+You can temporarily enable or disable vi-mode with handy functions (just execute them in terminal as any other regular command):
+
+| Function                    | Meaning                                      |
+| :-------------------------- | -------------------------------------------- |
+| `spaceship_vi_mode_enable`  | Enable vi-mode for current terminal session  |
+| `spaceship_vi_mode_disable` | Disable vi-mode for current terminal session |
+
+**Note:** If the prompt does not refresh when changing modes add `eval spaceship_vi_mode_enable` to your `.zshrc`. Beware that `spaceship_vi_mode_enable` will override the`zle-keymap-select` widget, so if you have a custom one just make sure it contains the line `zle reset-prompt ; zle -R`.
 
 ## License
 
-MIT © [Name Surname](http://yourwebsite.com)
+MIT © [Denys Dovhan](http://denysdovhan.com)
 
 <!-- References -->
 
