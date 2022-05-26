@@ -1,0 +1,41 @@
+name: ci
+on:
+  push:
+    branches:
+      - main
+      - +([0-9])?(.{+([0-9]),x}).x
+  pull_request:
+
+jobs:
+  main:
+    name: Tests
+    runs-on: ubuntu-latest
+    container: ghcr.io/spaceship-prompt/spaceship-prompt:4.x
+    steps:
+      - name: ⬇️ Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: 🖨 Print Zsh Vesion
+        run: zsh --version
+
+      - name: 🧪 Run Tests
+        run: ./tests/spaceship-section.test.zsh
+
+  release:
+    name: Release
+    needs: main
+    if: ${{ github.repository == 'spaceship-prompt/spaceship-section' && github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: 🚀 Release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+            semantic-release-license
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
