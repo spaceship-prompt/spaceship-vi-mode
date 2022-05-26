@@ -21,18 +21,22 @@ tool() {
 setUp() {
   # Enter the test directory
   cd $SHUNIT_TMPDIR
+
+  bindkey() {
+    echo "vi-quoted-insert"
+  }
 }
 
 oneTimeSetUp() {
   export TERM="xterm-256color"
 
   source "$SPACESHIP_ROOT/spaceship.zsh"
-  source "$(dirname $CWD)/spaceship-section.plugin.zsh"
+  source "$(dirname $CWD)/spaceship-vi-mode.plugin.zsh"
 
   SPACESHIP_PROMPT_ASYNC=false
   SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
   SPACESHIP_PROMPT_ADD_NEWLINE=false
-  SPACESHIP_PROMPT_ORDER=(section)
+  SPACESHIP_PROMPT_ORDER=(vi_mode)
 
   echo "Spaceship version: $(spaceship --version)"
 }
@@ -48,25 +52,39 @@ oneTimeTearDown() {
 # TEST CASES
 # ------------------------------------------------------------------------------
 
-test_incorrect_env() {
-  local expected=""
-  local actual="$(spaceship::testkit::render_prompt)"
-
-  assertEquals "do not render system version" "$actual" "$expected"
+test_defined() {
+  assertTrue 'should define spaceship_vi_mode' "spaceship::exists spaceship_vi_mode"
+  assertTrue 'should define spaceship_vi_mode_enable' "spaceship::exists spaceship_vi_mode_enable"
+  assertTrue 'should define spaceship_vi_mode_disable' "spaceship::exists spaceship_vi_mode_disable"
 }
 
-test_mocked_version() {
-  # Prepare the environment
-  touch $SHUNIT_TMPDIR/file-to-check.ext
-
-  local prefix="%{%B%}$SPACESHIP_SECTION_PREFIX%{%b%}"
-  local content="%{%B%F{$SPACESHIP_SECTION_COLOR}%}$SPACESHIP_SECTION_SYMBOL$mocked_version%{%b%f%}"
-  local suffix="%{%B%}$SPACESHIP_SECTION_SUFFIX%{%b%}"
-
+test_insert_mode() {
+  local prefix=""
+  local content="%{%B%F{$SPACESHIP_VI_MODE_COLOR}%}$SPACESHIP_VI_MODE_INSERT%{%b%f%}"
+  local suffix="%{%B%}$SPACESHIP_VI_MODE_SUFFIX%{%b%}"
   local expected="$prefix$content$suffix"
-  local actual="$(spaceship::testkit::render_prompt)"
 
-  assertEquals "render mocked version" "$actual" "$expected"
+  export KEYMAP="main"
+  local actual_main="$(spaceship::testkit::render_prompt)"
+
+  assertEquals "should render insert mode when main" "$actual_main" "$expected"
+
+  export KEYMAP="viins"
+  local actual_viins="$(spaceship::testkit::render_prompt)"
+
+  assertEquals "should render insert mode when viins" "$actual_viins" "$expected"
+}
+
+test_normal_mode() {
+  local prefix=""
+  local content="%{%B%F{$SPACESHIP_VI_MODE_COLOR}%}$SPACESHIP_VI_MODE_NORMAL%{%b%f%}"
+  local suffix="%{%B%}$SPACESHIP_VI_MODE_SUFFIX%{%b%}"
+  local expected="$prefix$content$suffix"
+
+  export KEYMAP="vicmd"
+  local actual_vicmd="$(spaceship::testkit::render_prompt)"
+
+  assertEquals "should render normal mode when vicmd" "$actual_vicmd" "$expected"
 }
 
 # ------------------------------------------------------------------------------
