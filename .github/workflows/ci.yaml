@@ -19,12 +19,12 @@ jobs:
         run: zsh --version
 
       - name: 🧪 Run Tests
-        run: ./tests/spaceship-section.test.zsh
+        run: ./tests/spaceship-vi-mode.test.zsh
 
   release:
     name: Release
     needs: main
-    if: ${{ github.repository == 'spaceship-prompt/spaceship-section' && github.event_name == 'push' }}
+    if: ${{ github.repository == 'spaceship-prompt/spaceship-vi-mode' && github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout Repo
