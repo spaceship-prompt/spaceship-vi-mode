@@ -10,7 +10,7 @@ jobs:
   main:
     name: Tests
     runs-on: ubuntu-latest
-    container: ghcr.io/spaceship-prompt/spaceship-prompt:4.x
+    container: ghcr.io/spaceship-prompt/spaceship-prompt:master
     steps:
       - name: ⬇️ Checkout Repo
         uses: actions/checkout@v2
