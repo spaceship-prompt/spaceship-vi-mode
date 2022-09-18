@@ -62,7 +62,7 @@ zplug "spaceship-prompt/spaceship-vi-mode"
 ### [antigen]
 
 ```zsh
-antigen bundle "spaceship-prompt/spaceship-vi-mode"
+antigen bundle spaceship-prompt/spaceship-vi-mode@main
 ```
 
 ### [antibody]
