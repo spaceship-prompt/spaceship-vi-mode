@@ -145,6 +145,12 @@ You can temporarily enable or disable vi-mode with handy functions (just execute
 
 **Note:** If the prompt does not refresh when changing modes add `eval spaceship_vi_mode_enable` to your `.zshrc`. Beware that `spaceship_vi_mode_enable` will override the`zle-keymap-select` widget, so if you have a custom one just make sure it contains the line `zle reset-prompt ; zle -R`.
 
+## Contributing
+
+First, thanks for your interest in contributing!
+
+Contribute to this repo by submitting a pull request. Please use [conventional commits](https://www.conventionalcommits.org/), since this project adheres to [semver](https://semver.org/) and is automatically released via [semantic-release](https://github.com/semantic-release/semantic-release).
+
 ## License
 
 MIT © [Denys Dovhan](http://denysdovhan.com)
