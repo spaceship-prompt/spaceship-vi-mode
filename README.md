@@ -62,7 +62,7 @@ zplug "spaceship-prompt/spaceship-vi-mode"
 ### [antigen]
 
 ```zsh
-antigen bundle "spaceship-prompt/spaceship-vi-mode"
+antigen bundle spaceship-prompt/spaceship-vi-mode@main
 ```
 
 ### [antibody]
@@ -107,7 +107,7 @@ git clone --depth=1 https://github.com/spaceship-prompt/spaceship-vi-mode.git "$
 For initializing prompt system add this to your `.zshrc`:
 
 ```zsh title=".zshrc"
-source "~/.zsh/spaceship-section/spaceship-vi-mode.plugin.zsh"
+source "~/.zsh/spaceship-vi-mode/spaceship-vi-mode.plugin.zsh"
 ```
 
 ## Usage
