@@ -14,7 +14,7 @@
   </a>
 
   <a href="https://github.com/spaceship-prompt/spaceship-vi-mode/actions">
-    <img src="https://img.shields.io/github/workflow/status/spaceship-prompt/spaceship-vi-mode/ci?style=flat-square"
+    <img src="https://img.shields.io/github/actions/workflow/status/spaceship-prompt/spaceship-gradle/ci.yaml?style=flat-square"
       alt="GitHub Workflow Status" />
   </a>
 
