@@ -108,6 +108,7 @@ For initializing prompt system add this to your `.zshrc`:
 
 ```zsh title=".zshrc"
 source "~/.zsh/spaceship-vi-mode/spaceship-vi-mode.plugin.zsh"
+spaceship_vi_mode_enable
 ```
 
 ## Usage
