@@ -132,7 +132,7 @@ spaceship add --before char vi_mode
 | `SPACESHIP_VI_MODE_SUFFIX` | `$SPACESHIP_PROMPT_DEFAULT_SUFFIX` | Section's suffix                     |
 | `SPACESHIP_VI_MODE_INSERT` |               `[I]`                | Text to be shown when in insert mode |
 | `SPACESHIP_VI_MODE_NORMAL` |               `[N]`                | Text to be shown when in normal mode |
-| `SPACESHIP_VI_MODE_COLOR`  |              `white`               | Sectin's color                       |
+| `SPACESHIP_VI_MODE_COLOR`  |              `white`               | Section's color                       |
 
 ## Helpers
 
