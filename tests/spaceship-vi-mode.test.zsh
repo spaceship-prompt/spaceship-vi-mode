@@ -87,6 +87,26 @@ test_normal_mode() {
   assertEquals "should render normal mode when vicmd" "$actual_vicmd" "$expected"
 }
 
+test_mode_specific_colors() {
+  export SPACESHIP_VI_MODE_INSERT_COLOR="yellow"
+  export SPACESHIP_VI_MODE_NORMAL_COLOR="blue"
+
+  export KEYMAP="viins"
+  local actual_viins="$(spaceship::testkit::render_prompt)"
+  local expected_viins="%{%B%F{yellow}%}$SPACESHIP_VI_MODE_INSERT%{%b%f%}%{%B%}$SPACESHIP_VI_MODE_SUFFIX%{%b%}"
+
+  assertEquals "should render insert mode with its specific color" "$actual_viins" "$expected_viins"
+
+  export KEYMAP="vicmd"
+  local actual_vicmd="$(spaceship::testkit::render_prompt)"
+  local expected_vicmd="%{%B%F{blue}%}$SPACESHIP_VI_MODE_NORMAL%{%b%f%}%{%B%}$SPACESHIP_VI_MODE_SUFFIX%{%b%}"
+
+  assertEquals "should render normal mode with its specific color" "$actual_vicmd" "$expected_vicmd"
+
+  unset SPACESHIP_VI_MODE_INSERT_COLOR
+  unset SPACESHIP_VI_MODE_NORMAL_COLOR
+}
+
 # ------------------------------------------------------------------------------
 # SHUNIT2
 # Run tests with shunit2
