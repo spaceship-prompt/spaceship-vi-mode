@@ -125,14 +125,16 @@ spaceship add --before char vi_mode
 
 ## Options
 
-| Variable                   |              Default               | Meaning                              |
-| :------------------------- | :--------------------------------: | ------------------------------------ |
-| `SPACESHIP_VI_MODE_SHOW`   |               `true`               | Show section                         |
-| `SPACESHIP_VI_MODE_PREFIX` |                 -                  | Section's prefix                     |
-| `SPACESHIP_VI_MODE_SUFFIX` | `$SPACESHIP_PROMPT_DEFAULT_SUFFIX` | Section's suffix                     |
-| `SPACESHIP_VI_MODE_INSERT` |               `[I]`                | Text to be shown when in insert mode |
-| `SPACESHIP_VI_MODE_NORMAL` |               `[N]`                | Text to be shown when in normal mode |
-| `SPACESHIP_VI_MODE_COLOR`  |              `white`               | Section's color                       |
+| Variable                         |              Default               | Meaning                               |
+| :------------------------------: | :--------------------------------: | ------------------------------------- |
+| `SPACESHIP_VI_MODE_SHOW`         |               `true`               | Show section                          |
+| `SPACESHIP_VI_MODE_PREFIX`       |                 -                  | Section's prefix                      |
+| `SPACESHIP_VI_MODE_SUFFIX`       | `$SPACESHIP_PROMPT_DEFAULT_SUFFIX` | Section's suffix                      |
+| `SPACESHIP_VI_MODE_INSERT`       |               `[I]`                | Text to be shown when in insert mode  |
+| `SPACESHIP_VI_MODE_NORMAL`       |               `[N]`                | Text to be shown when in normal mode  |
+| `SPACESHIP_VI_MODE_COLOR`        |              `white`               | Section's default color               |
+| `SPACESHIP_VI_MODE_INSERT_COLOR` |    `$SPACESHIP_VI_MODE_COLOR`      | Section's color in insert mode        |
+| `SPACESHIP_VI_MODE_NORMAL_COLOR` |    `$SPACESHIP_VI_MODE_COLOR`      | Section's color in normal mode        |
 
 ## Helpers
 
