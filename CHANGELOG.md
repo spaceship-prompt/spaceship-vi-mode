@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/spaceship-prompt/spaceship-vi-mode/compare/v1.0.2...v1.1.0) (2026-03-17)
+
+
+### Features
+
+* Support specific color for mode ([305bd85](https://github.com/spaceship-prompt/spaceship-vi-mode/commit/305bd85ab733ab66a33252c53e21b8592af10786))
+
 ## [1.0.2](https://github.com/spaceship-prompt/spaceship-vi-mode/compare/v1.0.1...v1.0.2) (2022-09-21)
 
 
